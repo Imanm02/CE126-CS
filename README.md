@@ -1,11 +1,39 @@
-# Assembly Tasks on Multiple Architectures
+# CE126-CS
+Solutions to Prof. Motahari's CE126: Machine Learning (Sharif University of Technology - Spring & Fall 2023) Assignments
 
-In this project, we tackled a series of 12 assembly programming tasks on three distinct machine architectures: 8086, IBM 360, and MIPS. Our solutions are compiled here, showcasing our proficiency in coding for various computing systems.
+## Overview
 
-You can also discover detailed descriptions of the 12 assembly tasks that constituted our project. Each task's context, specifications, and expected outcomes are meticulously documented, providing you with a clear understanding of the challenges we addressed.
+This repository contains solutions to the practical assignments for the CE933: Machine Learning course at the Sharif University of Technology, Spring & Fall 2023, taught by Prof. Motahari.
 
-# Maintainers
+## Table of Contents
+
+- [Overview](#overview)
+- [Practical Assignments](#practical-assignments)
+- [Theoretical Assignments](#theoritical-assignments)
+- [Exams](#exams)
+- [Notes](#notes)
+- [Source](#source)
+
+## Practical Assignments
+
+In the "Practical Assignments" folder, you will find the solutions to practical assignments given during the course.
+
+## Theoretical Assignments
+
+In the "Theoretical Assignments" folder, you will find the solutions to theoretical assignments given during the course.
+
+## Exams
+
+In the "Exams" folder, you will find the solutions to the midterm and final of the course in different semesters.
+
+## Notes
+
+In the "Notes" folder, you will find the notes which were given during the course.
+
+## Source
+
+In the "Source" folder, you will find the source of the course.
+
+## Maintainer
+
 - [Iman Mohammadi](https://github.com/Imanm02)
-- [Ali Salesi](https://github.com/AlisaLC)
-- [Shayan Salehi](https://github.com/eyepatchss)
-- [Armin Saghafian](https://github.com/ArminS1000)
