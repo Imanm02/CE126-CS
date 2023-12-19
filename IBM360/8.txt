@@ -1,0 +1,36 @@
+ADD start 0								
+STM R14, R12, 12(R13)						
+BALR R12, R0							
+using *, R12	
+
+		LA R2, 1		;R2 <- 1 R2 : POWER	
+		XR R4, R4		;R4 <- 0 R4 : INDEX
+		LA R5, 3		;R5 <- 3 R5 : LENGTH OF X
+		XR R6, R6		;R6 <- 0 R6 : TEMP
+		LA R8, 	A		;R8 <- A R7 : BASE
+		XR R10, R10	;R10 <- 0 R10 : NUMBER
+LOOP:	LA R6, X(R4)	;R6 <- X[ INDEX ]
+		MR R6, R2		;R6 <- R6 * POWER
+		MR R2, R8		;R2 <- BASE * POWER
+		AR R10, R5		;R10 <- NUMBER + TEMP
+		A R4, ONE		;R4 <- INDEX + 1
+		BCT R5, LOOP	;IF R5 != 0 GO TO LOOP AND R11 <- R11 - 1
+
+		LA R7, B		;R7 <- B R7 : NEW BASE
+		XR R4, R4		;R4 <- 0 R4 : INDEX
+		LR R11, R10	;R11 <- R10
+		XR R10, R10	;R10 <- 0
+LOP:	DR R10, R7		;R11 <- (R10:R11) / (R7) R10 <- REMAINDER
+		AR R4, R10		;R4 <- NUMBER % NEW BASE
+		XR R10, R10	;R10 <- 0
+		A R11, ONE		;R11 <- R11 + 1
+		BCT R11, LOP	;IF R11 != 0 GO TO LOP
+
+OUT:	BR R14
+
+A		DS F'4'
+B		DS F'9'
+X		DS C'102'
+ONE		DS F'1'
+FINAL	DS C'0000000000'
+end

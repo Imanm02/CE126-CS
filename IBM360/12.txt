@@ -1,0 +1,42 @@
+ADD start 0								
+STM R14, R12, 12(R13)						
+BALR R12, R0							
+using *, R12	
+
+		LA R2, 1		;R2 <- 1 R2 : MOVES
+		LA R4, 0		;R4 <- 0 R4 : INDEX OF ARR
+		LA R5, 1		;R5 <- 1 R5 : TURN
+		LA R6, N		;R6 <- N R6 : COUNTER OF INPUT
+		S  R6, ONE		;R6 <- R6 - 1
+		LA R7, 0		;R7 <- 0 R7 : ZERO
+		LA R10, 1		;R10 : ONE
+
+OLP:	LA R3, N		;R3 <- N R3 : INPUT
+
+STR:	A R4, ONE		;INDEX += 1
+		LA R9, ARR(R4)	
+		BCT R9, ILOOP		;ARR[ INDEX ] != 0  PC <- ILOOP
+		B	STR
+
+ILOOP: XR R5, R10		;TURN = !TURN
+		A  R5, ONE		;TURN = TURN + 1
+		BCT R5, REC	;IF TURN = 1  PC <- STR
+		BCT R3, STR	;INPUT -= 1 IF INPUT = 0 PC <- OLP
+		LR R11, R6
+		BCT R11, OLP	;COUNTER OF INPUT -= 1 PC <- OLOOP
+	
+REC:	ST R7, ARR(R4)	;ARR(R4) = 0
+		S  R6, ONE
+		B  STR
+
+		
+
+OUT:	A R4, ONE		;INDEX OF ARR += 1
+		ST R4, FINAL	;FINAL IS THE ANSWER!
+		BR R14
+
+N		DS F'105'
+ONE		DS F'1'
+FINAL	DS F'0'
+ARR		DS 105F'1'
+end

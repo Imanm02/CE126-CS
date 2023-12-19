@@ -1,0 +1,100 @@
+.data
+msg1: .asciiz "Give a number: "
+fibans: .word 0
+num: .word 0
+.text
+.globl main
+main:
+    li $v0,  4
+    la $a0,  msg1
+    syscall             # print msg
+    li $v0,  5
+    syscall             # read an int
+    add $a0, $v0, $zero # move to $a0
+    la $s1,num
+    sw $a0,0($s1)
+
+    jal fib             # call fib
+    la $s0,fibans
+    sw $v0,0($s0)
+    
+    lw $a0,0($s1)
+    jal fact
+    lw $t0,0($s0)
+
+    add $a0, $v0, $t0
+    li  $v0, 1
+    syscall
+
+    li $v0, 10
+    syscall
+
+fib:
+ # $a0 = y
+    # if (y == 0) return 0;
+    # if (y == 1) return 1;
+    # return fib(y - 1) + fib(y - 2);
+
+    #save in stack
+    addi $sp, $sp, -12 
+    sw   $ra, 0($sp)
+    sw   $s0, 4($sp)
+    sw   $s1, 8($sp)
+
+    add $s0, $a0, $zero
+
+    addi $t1, $zero, 1
+    beq  $s0, $zero, return0
+    beq  $s0, $t1,   return1
+    addi $a0, $s0, -1
+
+    jal fib
+
+    add $s1, $zero, $v0         # $s1 = fib(y - 1)
+
+    addi $a0, $s0, -2
+
+    jal fib                     # $v0 = fib(n - 2)
+
+    add $v0, $v0, $s1           # $v0 = fib(n - 2) + $s1
+
+    exitfib:
+
+        lw   $ra, 0($sp)        # read registers from stack
+        lw   $s0, 4($sp)
+        lw   $s1, 8($sp)
+        addi $sp, $sp, 12       # bring back stack pointer
+        jr $ra
+
+    return1:
+        li $v0,1
+        j exitfib
+
+    return0:     
+        li $v0,0
+        j exitfib
+ fact:
+    # base case -- still in parent's stack segment
+    # adjust stack pointer to store return address and argument
+    addi    $sp, $sp, -8
+    # save $s0 and $ra
+    sw      $s0, 4($sp)
+    sw      $ra, 0($sp)
+    bne     $a0, 0, else
+    addi    $v0, $zero, 1    # return 1
+    j fact_return
+
+else:
+    # backup $a0
+    move    $s0, $a0
+    addi    $a0, $a0, -1 # x -= 1
+    jal     fact
+    # when we get here, we already have Fact(x-1) store in $v0
+    multu   $s0, $v0 # return x*Fact(x-1)
+    mflo    $v0
+fact_return:
+    lw      $s0, 4($sp)
+    lw      $ra, 0($sp)
+    addi    $sp, $sp, 8
+    jr      $ra
+

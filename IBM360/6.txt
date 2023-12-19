@@ -1,0 +1,32 @@
+Main start 0
+STM R14, R12, 12(R13)
+BALR R12, R0
+using *, R12
+
+L R8, One
+L R3, BigNum
+LR R1, R3
+L R5, SmallNum
+AR R3, R5
+LR R7, R3
+SR R5, R8
+Loop:
+SR R3, R8
+MR R6, R3
+BCT R5, Loop
+L R5, SmallNum
+ST R7, Result
+Loop2:
+DR R6, R5
+BCT R5, Loop2
+ST R7, Result
+
+LM R14, R12, 12(R13)
+BR R14
+
+BigNum DC F'15'
+SmallNum DC F'4'
+One DC F'1'
+Result DS F'0'
+
+end
