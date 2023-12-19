@@ -1,34 +1,29 @@
 # CE126-CS
-Solutions to Prof. Motahari's CE126: Machine Learning (Sharif University of Technology - Spring & Fall 2023) Assignments
+Solutions to Prof. Sarbazi's CE126: Computer Structure and Machine Language (Sharif University of Technology - Fall 2021) Assignments
 
 ## Overview
 
-This repository contains solutions to the practical assignments for the CE933: Machine Learning course at the Sharif University of Technology, Spring & Fall 2023, taught by Prof. Motahari.
+This repository contains solutions to the assignments for the CE126: Computer Structure and Machine Language course at the Sharif University of Technology, Fall 2021, taught by Prof. Sarbazi.
 
 ## Table of Contents
 
 - [Overview](#overview)
-- [Practical Assignments](#practical-assignments)
-- [Theoretical Assignments](#theoritical-assignments)
+- [Assignments](#assignments)
 - [Exams](#exams)
-- [Notes](#notes)
+- [Slides](#slides)
 - [Source](#source)
 
-## Practical Assignments
+## Assignments
 
-In the "Practical Assignments" folder, you will find the solutions to practical assignments given during the course.
-
-## Theoretical Assignments
-
-In the "Theoretical Assignments" folder, you will find the solutions to theoretical assignments given during the course.
+In the "Assignments" folder, you will find the solutions to assignments given during the course.
 
 ## Exams
 
-In the "Exams" folder, you will find the solutions to the midterm and final of the course in different semesters.
+In the "Exams" folder, you will find the solutions to the midterm and midterm and final of the course.
 
-## Notes
+## Slides
 
-In the "Notes" folder, you will find the notes which were given during the course.
+In the "Slides" folder, you will find the slides of the course.
 
 ## Source
 
