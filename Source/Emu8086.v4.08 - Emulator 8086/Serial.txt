@@ -1,0 +1,6 @@
+emu8086 v4.08
+-------------
+
+Name   : AggressioN
+Serial : 27RPXJKASEAKDLSR2ERKRTQZ
+
