@@ -12,6 +12,7 @@ This repository contains solutions to the assignments for the CE126: Computer St
 - [Exams](#exams)
 - [Slides](#slides)
 - [Source](#source)
+- [Maintainer](#maintainer)
 
 ## Assignments
 
@@ -19,7 +20,7 @@ In the "Assignments" folder, you will find the solutions to assignments given du
 
 ## Exams
 
-In the "Exams" folder, you will find the solutions to the midterm and midterm and final of the course.
+In the "Exams" folder, you will find the solutions to the midterm and final of the course.
 
 ## Slides
 
@@ -27,7 +28,7 @@ In the "Slides" folder, you will find the slides of the course.
 
 ## Source
 
-In the "Source" folder, you will find the source of the course.
+In the "Source" folder, you will find the resources of the course.
 
 ## Maintainer
 
