@@ -5,7 +5,7 @@ Solutions to Prof. Sarbazi's CE126: Computer Structure and Machine Language (Sha
 
 This repository contains solutions to the assignments for the CE126: Computer Structure and Machine Language course at the Sharif University of Technology, Fall 2021, taught by Prof. Sarbazi.
 
-Course Videos: https://t.me/CS_Sarbazi
+Course videos are also uploaded here https://t.me/CS_Sarbazi.
 
 ## Table of Contents
 
