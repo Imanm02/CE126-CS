@@ -1,0 +1,61 @@
+Sum start 0								; segment declaration
+STM R14, R12, 12(R13)						; storing the original values of registers
+BALR R12, R0							; storing PC value in R12
+using *, R12							; declaration of R12 as the base register
+
+ST R13, Reg13							; storing R13 in Reg13
+LA R13, RegSaveArea 						; R13 <- address of RegSaveArea, this will be passed to the child segment
+
+	LA R1, Var							; R1 <- address of Var, this will be passed to the child segment
+	LA R2, P							; R2 <- address of P, this will be passed to the child segment
+	LA R3, 12							; n <- 12 (R3 will be passed to the child segment)
+	L  R15, =V(Product)					; R15 <- address of the beginning of the child segment
+	XR R4, R4							; R4 <- 0, R4 will hold the sum of the products
+
+loop:	BM out							; break out of the loop if n < 0
+	BALR R14, R15						; branch to the child segment, with R14 holding the return address
+	A  R4, P							; add the product calculated by the child segment to R14
+	S  R3, =F'4'						; n <- n - 4
+	B  loop
+
+out:	ST R4, Result						; Store the final result
+
+L  R13, Reg13 							; restoring R13 from Reg13
+LM R14, R12, 12(R13)						; restoring the original values of registers
+BR R14								; returning control to OS
+	
+Var DC F '3, 1, 2, 0, 4, -1, 5, 2, 6, -2, 1, 3'	; a 4x3 matrix with arbitrary element values Var[i, j] for i in {0, 1, 2, 3} and j in {0, 1, 2}
+									; note that Var[i, j] = *(Var + n x 3 + m) for n in {0, 4, 8, 12} and m in {0, 4, 8} since Var has 4-byte words
+P DS F								; P = Product(Var[i, j]) over j in {0, 1, 2} for i in each iteration
+Result DS F								; Result = Sum(Product(Var[i, j]) over j in {0, 1, 2}) over i in {0, 1, 2, 3}
+RegSaveArea DS 15 F						; variable to store the values of the registers by the child segment
+Reg13 DS F								; variable to store the value of R13 so that we can restore it after the child segment has changed it
+
+end									; end of segment
+
+
+Product start 0							; segment declaration
+STM R14, R12, 0(R13)						; storing the register values of the parent segment in its RegSaveArea variable
+BALR R12, R0							; storing PC value in R12
+using *, R12							; declaration of R12 as the base register
+
+									; R1 = address of Var, R2 = Address of P, R3 = n, and we need these values in this segment
+
+	LA R9, 1							; R9 <- 1, R9 will hold the product of the elements in the current row
+	LA R5, 8							; m <- 8
+
+loop:	BM out							; break out of the loop if m < 0
+	LA R7, 3
+	MR R6, R3							; [R6, R7] <- n x 3, note that R7 holds the value since the multiplied numbers were small
+	AR R7, R5							; R7 <- n x 3 + j
+	AR R7, R1							; R7 <- Var + n x 3 + m (address of Var[i, j])
+	M  R8, 0(R7)						; [R8, R9] <- R9 x Var[i, j], note that R9 holds the value since the multiplied numbers were small		 								
+	S  R5, =F'4'						; j <- j - 4						
+	B  loop							; next iteration
+	
+out:	ST R9, 0(R2)						; P <- R9
+
+LM R14, R12, 0(R13)						; restoring the register values of the parent segment
+BR R14								; returning control to the parent segment
+
+end									; end of segment
