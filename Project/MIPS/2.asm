@@ -115,14 +115,3 @@ end:
   li $v0, 2
   mov.s $f12, $f1   
   syscall
-    
-    
-   
-   
-   
-   
-   
-   
-   
-    
-    

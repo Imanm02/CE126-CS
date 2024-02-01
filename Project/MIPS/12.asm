@@ -76,7 +76,7 @@ start_prog:
     la $sp, stack
     addi $sp, $sp, 800
 
-    print_stri("Please enter number n\: ")
+    print_stri("Enter number n\: ")
     read_int_v0()
     move $a0, $v0
     call(func)
@@ -89,11 +89,11 @@ end_prog:
 j exit
 
 exit_divide_by_zero:
-print_stri("Divide by zero happened")
+print_stri("Divide by zero")
 j exit
 
 exit_overflow:
-print_stri("There was an overflow")
+print_stri("Overflow")
 j exit
 
 exit_not_valid:

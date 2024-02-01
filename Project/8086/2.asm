@@ -63,7 +63,7 @@ ORG    100h
     idiv bx
     call arctg
     mov r , bx    
-    ; z and r are ready to print!
+    ; z and r are ready to print
 ;    call print_num_uns    
    
            

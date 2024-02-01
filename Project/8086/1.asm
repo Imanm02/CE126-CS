@@ -232,12 +232,12 @@ GAUSS macro
     
 NoAnswer:
     call CLEAR_SCREEN
-    print 'KALAK ZADI'
+    print 'NO ANSWER'
     RET    
     
 endm
 
-nomatrix db 'Kalak Zadi'
+nomatrix db 'NO ANSWER'
 
 
 SWAPROWS macro i, j               

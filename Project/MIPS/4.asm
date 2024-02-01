@@ -230,7 +230,7 @@ read_expr:
 
 
 start_prog:
-    print_stri("Please enter the expression to evaluate\: ")
+    print_stri("Enter the expression to evaluate\: ")
     call(get)
     call(read_expr)
     bne $s0, '\n', exit_not_valid
@@ -241,11 +241,11 @@ end_prog:
 j exit
 
 exit_divide_by_zero:
-print_stri("Divide by zero happened")
+print_stri("Divide by zero")
 j exit
 
 exit_overflow:
-print_stri("There was an overflow")
+print_stri("Overflow")
 j exit
 
 exit_not_valid:
