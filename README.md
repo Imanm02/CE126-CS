@@ -11,7 +11,7 @@ Course videos are also uploaded here https://t.me/CS_Sarbazi.
 
 - [Overview](#overview)
 - [Assignments](#assignments)
-- [Exams](#exams)
+- [Exam](#exam)
 - [Slides](#slides)
 - [Source](#source)
 - [Maintainer](#maintainer)
@@ -20,9 +20,9 @@ Course videos are also uploaded here https://t.me/CS_Sarbazi.
 
 In the "Assignments" folder, you will find the solutions to assignments given during the course.
 
-## Exams
+## Exam
 
-In the "Exams" folder, you will find the solutions to the midterm and final of the course.
+In the "Exam" folder, you will find the solutions to the midterm and final of the course.
 
 ## Slides
 
